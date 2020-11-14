@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.carousel-div {
+  display:none
+}
+.shown {
+  display: block
+}
+
+
