@@ -4,19 +4,27 @@ import './App.css';
 import tanya from "./images/image-tanya.jpg"
 import john from "./images/image-john.jpg"
 function App() {
-  function switchToFirst() {
-    let second = document.getElementById('second')
-    second?.classList.remove('shown')
-    let first = document.getElementById('first')
-    first?.classList.add('shown')
+  const first = document.getElementById('first')
+  const second = document.getElementById('second')
+
+  if (!first) {
+    return null
   }
-  function switchToSecond() {
-    let first = document.getElementById('first')
-    first?.classList.remove('shown')
-    let second = document.getElementById('second')
-    second?.classList.add('shown')
+
+  if (!second) {
+    return null
   }
-  
+
+  function switchToFirst(first:HTMLElement, second:HTMLElement) {
+      second.classList.remove('shown')
+      first.classList.add('shown')
+  }
+
+  function switchToSecond(first:HTMLElement, second:HTMLElement) {
+      first.classList.remove('shown')
+      second.classList.add('shown')
+  }
+
   return (
     <div className="App">
       <div className="carousel-wrapper">
@@ -25,8 +33,8 @@ function App() {
             <div>
               <p>
               “ If you want to lay the best foundation possible I’d recommend taking this course. 
-        The depth the instructors go into is incredible. I now feel so confident about 
-        starting up as a professional developer. ”
+              The depth the instructors go into is incredible. I now feel so confident about 
+              starting up as a professional developer. ”
               </p>
               <h2>
                 Tanya Sinclair
@@ -38,10 +46,10 @@ function App() {
             <div>
               <img src={tanya} alt="picture of Tanya"/>
             </div>
-            <button onClick={() => switchToSecond() }>
+            <button onClick={() => switchToSecond(first, second) }>
                 yes
             </button>
-            <button onClick={() => switchToSecond()}>
+            <button onClick={() => switchToSecond(first, second)}>
                 no
             </button>
           </div>
@@ -62,10 +70,10 @@ function App() {
           <div>
             <img src={john} alt="picture of John"/>
           </div>
-            <button onClick={() => switchToFirst()}>
+            <button onClick={() => switchToFirst(first, second)}>
               yes
             </button>
-            <button onClick={() => switchToFirst()}>
+            <button onClick={() => switchToFirst(first, second)}>
               no
             </button>
           </div>
